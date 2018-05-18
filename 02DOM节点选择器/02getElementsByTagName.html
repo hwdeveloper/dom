@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>01getElementById</title>
+</head>
+<body>
+  <p>段落1</p>
+  <p>段落2</p>
+  <p>段落3</p>
+  <p>段落4</p>
+
+</body>
+<script>
+    //1,通过ID选择器获得图片
+    var divPs = document.getElementsByTagName('p');
+    // divP.forEach(function (p) {
+    //     console.log(p);
+    // })
+    for(var i=0;i<divPs.length;i++){
+        // console.log(divP[i]);
+        divPs[i].innerHTML="改变后的数据";
+    }
+    //console.log(divP.length);
+    </script>
+</html>
