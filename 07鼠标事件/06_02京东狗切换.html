@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<img id="box" src="images/02-1.png"/>
+<img id="box" src="../00images/02-1.png"/>
 
 <script>
     //需求：鼠标进入换一张图片。移开在换回来。
@@ -31,14 +31,14 @@
     //2.绑定事件
     img.onmouseover = function () {
         //3.书写事件驱动程序(修改src属性)
-        img.src = "images/02-2.png";
+        img.src = "../00images/02-2.png";
     }
 
     //2.绑定事件(移开)
     img.onmouseout = fn;
     function fn() {
         //3.书写事件驱动程序(修改src属性)
-        this.src = "images/02-1.png";
+        this.src = "../00images/02-1.png";
     }
 
 </script>
