@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>03收缩菜单</title>
+    <style>
+        .menu{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu" onclick="showContent(this)">菜单一</div>
+<div class="menu" onclick="showContent(this)" >菜单二</div>
+<div class="menu" onclick="showContent(this)">菜单三</div>
+
+</body>
+
+
+<script>
+
+     var buffer;
+     var child;
+    function showContent(menu) {
+        if(buffer!=null){
+            buffer.removeChild(child);
+        }
+       //1,创建节点
+        var div = document.createElement('div');
+        div.innerHTML="<div>1</div><div>2</div><div>3</div>";
+        menu.appendChild(div);
+
+        child=div;
+        buffer=menu;
+    }
+
+
+</script>
+</html>
