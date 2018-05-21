@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "Arial", serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<a href="#">注册</a>
+<ul id="imagegallery">
+    <!--<li>-->
+        <!--<a href="../00images/05-1.jpg" title="美女A">-->
+            <!--<img src="../00images/05-1-small.jpg" width="100" alt="美女1"/>-->
+        <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+        <!--<a href="../00images/05-2.jpg" title="美女B">-->
+            <!--<img src="../00images/05-2-small.jpg" width="100" alt="美女2"/>-->
+        <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+        <!--<a href="../00images/05-3.jpg" title="美女C">-->
+            <!--<img src="../00images/05-3-small.jpg" width="100" alt="美女3"/>-->
+        <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+        <!--<a href="../00images/05-4.jpg" title="美女D">-->
+            <!--<img src="../00images/05-4-small.jpg" width="100" alt="美女4"/>-->
+        <!--</a>-->
+    <!--</li>-->
+</ul>
+
+
+<!--<div style="clear:both"></div>-->
+<!--<img id="image" src="../00images/05-4-small.jpg" width="450px"/>-->
+<!--<p id="des">选择一个图片</p>-->
+
+<script>
+
+    var infors = [
+        {
+            url:'../00images/05-1.jpg',
+            alt:'美女A'
+        },
+        {
+            url:'../00images/05-2.jpg',
+            alt:'美女B'
+        },
+        {
+            url:'../00images/05-3.jpg',
+            alt:'美女C'
+        },
+        {
+            url:'../00images/05-4.jpg',
+            alt:'美女D'
+        }
+    ];
+    //1,获得节点
+    var ul = document.getElementById('imagegallery');
+    //2,遍历数据
+    infors.forEach(function (infor) {
+        //1,创建li节点
+        var li =document.createElement('li');
+        //2,创建图片标签
+        var img = document.createElement('img');
+        //3,设置监听
+        img.onclick=function (ev) {
+            //(1)获得点击图片的地址
+            var src = ev.target.src;
+            //(2)获得显示图片
+            lunbo.src=src;
+
+        }
+        //4,设置图片的相关信息
+        img.src=infor.url;
+        img.width='200';
+        img.alt=infor.alt;
+
+        //5，把图片添加到li
+        li.appendChild(img);
+        ul.appendChild(li);
+    })
+
+    var lunbo=document.createElement('img');
+    lunbo.width=500;
+    lunbo.src=infors[0].url;
+    lunbo.alt=infors[0].alt;
+
+    document.body.appendChild(lunbo);
+
+</script>
+</body>
+</html>
