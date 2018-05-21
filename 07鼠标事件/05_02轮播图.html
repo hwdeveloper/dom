@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div{
+            width: 750px;
+            height: 600px;
+            margin: auto;
+            background: #92a5bc;
+        }
+    </style>
+
+<body onload="start()">
+<div class="div" style="position: relative">
+    <img style="position: absolute" id="img" src="../00images/02-1.png">
+</div>
+<script>
+
+    var img =document.getElementById('img');
+
+    var imgX=0;
+    function run() {
+        console.log(imgX);
+        imgX = imgX +40;
+        img.style.left=imgX+"px";
+    }
+
+    function start() {
+      var id=  setInterval('run()',500);
+    }
+
+</script>
+</body>
+</html>
