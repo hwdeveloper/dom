@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>05HTML事件</title>
+</head>
+<body onreset="reset()" onload="start()" onbeforeunload="over()" onscroll="scroll()">
+
+
+</body>
+<script>
+    function start() {
+        alert('开始');
+    }
+    
+    function over() {
+        alert('结束');
+    }
+    
+    function scroll() {
+        alert('滚动');
+    }
+    
+    function reset() {
+        alert('尺寸改变');
+    }
+</script>
+</html>
