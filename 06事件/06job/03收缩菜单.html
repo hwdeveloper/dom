@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>03收缩菜单</title>
+    <style>
+        .menu{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu" onclick="showContent(this)">菜单一</div>
+<div style="visibility: hidden"><div>一</div><div>二</div><div>三</div></div>
+<div class="menu" onclick="showContent(this)" >菜单二</div>
+<div style="visibility: hidden"><div>一</div><div>二</div><div>三</div></div>
+<div class="menu" onclick="showContent(this)">菜单三</div>
+<div style="visibility: hidden"><div>一</div><div>二</div><div>三</div></div>
+</body>
+
+
+<script>
+
+    function showContent(menu) {
+
+        //1,获得class名字为menu的标签元素
+        var menus = document.getElementsByClassName('menu');
+        //2,进行遍历
+        var length = menus.length;
+        for(var i=0;i<length;i++){
+            //3，获得菜单的下一个节点
+        var content =menus[i].nextElementSibling;
+        //4,设置它为隐藏
+            content.style.visibility="hidden";
+        }
+        //1，获得当前节点的下一个节点
+      var nect=  menu.nextElementSibling;
+      console.log(nect)
+      //2,显示
+        nect.style.visibility="visible";
+    }
+
+
+</script>
+</html>
