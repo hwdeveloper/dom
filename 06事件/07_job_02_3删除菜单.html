@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>H5 新属性</title>
+</head>
+<body>
+<table id="table" border="1px">
+    <tr ><td>编号</td><td>姓名</td><td>介绍</td><td>删除</td></tr>
+    <tr id="tr1"><td>编号1</td><td>姓名</td><td>介绍</td><td><button onclick="deleteTr(1)">删除</button></td></tr>
+    <tr id="tr2"><td>编号2</td><td>姓名</td><td>介绍</td><td><button onclick="deleteTr(2)">删除</button></td></tr>
+    <tr id="tr3"><td>编号3</td><td>姓名</td><td>介绍</td><td><button onclick="deleteTr(3)">删除</button></td></tr>
+    <tr id="tr4"><td>编号4</td><td>姓名</td><td>介绍</td><td><button onclick="deleteTr(4)">删除</button></td></tr>
+    <tr id="tr5"><td>编号5</td><td>姓名</td><td>介绍</td><td><button onclick="deleteTr(5)">删除</button></td></tr>
+    <tr id="tr6"><td>编号6</td><td>姓名</td><td>介绍</td><td><button onclick="deleteTr(6)">删除</button></td></tr>
+    <tr id="tr7"><td>编号7</td><td>姓名</td><td>介绍</td><td><button onclick="deleteTr(7)">删除</button></td></tr>
+</table>
+
+</body>
+
+<script>
+function deleteTr(id) {
+
+  var table = document.getElementById('table');
+  var tr = document.getElementById('tr'+id);
+    table.removeChild(tr);
+}
+
+</script>
+</html>
