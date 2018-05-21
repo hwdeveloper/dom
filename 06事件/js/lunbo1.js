@@ -29,35 +29,51 @@ function Lunbo(infors) {
             this.img.src=infor.url;
             this.img.width='200';
             this.img.alt=infor.alt;
+            this.img.setAttribute('id','img'+index);
 
             //5，把图片添加到li
             this.li.appendChild(this.img);
             ul.appendChild(this.li);
+
+            index++;
         })
+        index=0;
 
        lunbo=document.createElement('img');
         lunbo.width=500;
-        lunbo.src=infors[0].url;
-        lunbo.alt=infors[0].alt;
+        lunbo.src=infors[index].url;
+        lunbo.alt=infors[index].alt;
 
         document.body.appendChild(lunbo);
     }
     
     this.run=function () {
-        this.bigImageRun();
-    }
-
-    //处理大的图片显示效果
-    this.bigImageRun=function () {
         //当前显示图片的下标超过数组的长度
         if(index>=length){
             //设置为图片开始
             index=0;
         }
+        this.listImage();
+        this.bigImageRun();
+    }
+
+    //处理大的图片显示效果
+    this.bigImageRun=function () {
         //获得图片的地址，给图片标签赋值
         lunbo.src=infors[index].url;
         //下标增加
         index++;
+    }
+    var buffer;
+    this.listImage=function () {
+
+        if(buffer!=null){
+            buffer.style.border='';
+        }
+        var currentImage=document.getElementById('img'+index);
+        currentImage.style.border='#8ae234 1px solid';
+
+        buffer =currentImage;
     }
     
 }
