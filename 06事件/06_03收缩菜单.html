@@ -30,15 +30,15 @@
         //2,进行遍历
         var length = menus.length;
         for(var i=0;i<length;i++){
-            //3，获得菜单的下一个节点
+        //3，获得菜单的下一个节点
         var content =menus[i].nextElementSibling;
         //4,设置它为隐藏
             content.style.display="none";
         }
-        //1，获得当前节点的下一个节点
+        //5，获得当前节点的下一个节点
       var nect=  menu.nextElementSibling;
       console.log(nect)
-      //2,显示
+        //6,显示
         nect.style.display="block";
     }
 
