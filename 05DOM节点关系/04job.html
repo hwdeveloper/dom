@@ -3,90 +3,80 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>04job</title>
+    <title>H5 新属性</title>
     <style>
-        .td{
+        td{
             border: red 1px solid;
         }
-        #buttonImg{
-          width: 20px;
+
+        td img{
+            width: 20px;
             height: 20px;
+        }
+        #name{
+            width: 80px;
         }
     </style>
 </head>
 <body>
-
-
 </body>
-
 <script>
-    //1,创建数组
+    //1,创建table标签元素
+    var table = document.createElement('table');
+    //2,获得body元素
+    var body = document.body;
+    //3,把table添加到body里面
+    body.appendChild(table);
+    //4,创建tr标签
+    var tr = document.createElement('tr');
+    tr.innerHTML="<td id='name'>姓名<img id='img' onclick='showMenu()' src='img/hide.jpg'/></td ><td class='hideE'>年龄</td><td class='hideE'>介绍</td>";
+    //5,把tr添加到table里面
+    table.appendChild(tr);
+
+    //6,创建数组
     var singers = new Array();
     singers[0] = {name:'容祖儿',age:18,introduce:'容祖儿（Joey Yung），1980年6月16日生于中国香港，中国香港女歌手。香港英皇集团旗下艺人。'};
     singers[1] = {name:'徐佳莹',age:48,introduce:'徐佳莹，台湾创作女歌手。2008年参加第三届《超级星光大道》夺得冠军，踏入歌坛。发表《LaLa首张创作专辑》、《理想人生》等作品，创作实力备受肯定。'};
     singers[2] = {name:'李克勤',age:38,introduce:'李克勤，香港著名粤语流行曲歌手、演员、主持人，擅长演绎多种曲风，以浪漫情歌和励志快歌为主，声线以高、清、亮见称，有“零瑕疵歌手”的美誉；曾荣获十大劲歌金曲榜“最受欢迎男歌手”、香港杰出歌手奖、港台最佳流行男歌手等音乐奖项。'};
 
-    var isShow =true;
-    //1,创建表格元素
-    var table = document.createElement('table');
-    //table.setAttribute('class','table')
-    //2,获得容器
-    var body = document.body;
-    //3,把表格添加到容器里面
-    body.appendChild(table);
-    //4,创建第一个行
-    var tr = document.createElement('tr');
-    //5,设置内容
-    tr.innerHTML="<td class='td'>姓名<img onclick='showMenu()' id='buttonImg' src='img/hide.jpg'></td><td id='age0'  class='td'>年龄</td><td id='introduce0'  class='td'>介绍</td>"
-    table.appendChild(tr);
-    //4，遍历数据
-    var index=1;
+    //7,遍历数组数据
     singers.forEach(function (singer) {
-        //5,创建行TR
+        //8,提取歌手数据
+        var name = singer.name;
+        var age = singer.age;
+        var introduce = singer.introduce;
+        //9,创建tr标签
         var tr = document.createElement('tr');
-        //6,设置内容
-        tr.innerHTML="<td class='td'>"+singer.name+"</td><td id='age"+index+"'  class='td'>"+singer.age+"</td><td id='introduce"+index+"'  class='td'>"+singer.introduce+"</td>"
+        //10,设置tr数据
+        tr.innerHTML="<td>"+name+"</td><td class='hideE'>"+age+"</td><td class='hideE'>"+introduce+"</td>";
+        //11,把tr放置到table里面
         table.appendChild(tr);
-        index++;
     })
-
-
-    
+    var img = document.getElementById('img');
+    var isShow =true;
+    //12,点击事件
     function showMenu() {
+        //13,获得class为hideE的标签
+        var elements = document.getElementsByClassName('hideE');
+        //14,遍历每个节点
+        var length = elements.length;
 
         if(isShow){
-            //隐藏
-            var buttonImg = document.getElementById('buttonImg');
-            var length = singers.length;
-            for(var i=0;i<=length;i++){
-                var ageTd = document.getElementById('age'+i);
-                var introduceTd = document.getElementById('introduce'+i);
-
-                ageTd.style.visibility='hidden';
-                introduceTd.style.visibility='hidden';
+            for(var i=0;i<length;i++){
+                //15,设置为隐藏
+                elements[i].style.visibility="hidden";
             }
-
-            buttonImg.src="img/show.jpg";
+            img.src="img/show.jpg";
             isShow=false;
         }else{
-            var buttonImg = document.getElementById('buttonImg');
-            var length = singers.length;
-            for(var i=0;i<=length;i++){
-                var ageTd = document.getElementById('age'+i);
-                var introduceTd = document.getElementById('introduce'+i);
-
-                ageTd.style.visibility='visible';
-                introduceTd.style.visibility='visible';
+            for(var i=0;i<length;i++){
+                //15,设置为显示
+                elements[i].style.visibility="visible";
             }
-
-            buttonImg.src="img/hide.jpg";
+            img.src="img/hide.jpg";
             isShow=true;
         }
-
-
-
-
     }
-
 </script>
+
 </html>
