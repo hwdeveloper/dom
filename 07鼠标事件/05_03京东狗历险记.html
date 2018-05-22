@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>05_03京东狗历险记</title>
+</head>
+<body onload="start()">
+<div id="box" style="width: 1000px;height: 700px;margin: auto;background: #4e82b4">
+<img id="dog" style="position: absolute"  src="../00images/02-2.png">
+
+</div>
+
+</body>
+<script>
+    //1,获得图片标签
+    var dog =document.getElementById('dog');
+    //2,设置相关变量
+    var isOver=false;
+    var isDown=false;
+    var isJump=false;
+    dog.onmouseover=function (ev) {
+        if(!isJump)
+        isOver=true;
+    }
+    dog.onmousedown=function (ev) {
+
+        if(isOver&&!isJump){
+            isDown=true;
+        }
+    }
+
+    var dogY;
+    dog.onmouseup=function (ev) {
+        if(isDown){
+            isDown=false;
+            isJump=true;
+            time=0;
+        }
+    }
+
+    document.body.onmousemove=function (ev) {
+        var x = ev.clientX;
+        var y = ev.clientY;
+       if(isDown&&!isJump){
+           dog.style.left=x+"px";
+           dog.style.top=y+"px";
+           dogY=y;
+       }
+    }
+var speed=20;
+    var time = 0;
+
+function run() {
+    if(isJump){
+        //speed =speed *2;
+        var h=1/2*10*time*time;
+        dogY = dogY +h;
+        if(dogY>700){
+            isJump=false;
+            dogY=700;
+        }
+        dog.style.top=dogY+"px";
+        time++;
+    }
+}
+
+function start() {
+    setInterval('run()',500);
+}
+
+</script>
+
+</html>
