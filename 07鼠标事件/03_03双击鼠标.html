@@ -13,7 +13,7 @@
     var oBox = document.getElementById('box');
     oBox.onclick = oBox.ondblclick  = oBox.onmousedown = oBox.onmouseup=function(e){
         e = e || event;
-        box.innerHTML += e.type+ ';';
+        box.innerHTML = e.type+ ';';
     }
 </script>
 </body>
