@@ -6,7 +6,7 @@
     <style>
         .div{
             width: 750px;
-            height: 600px;
+            height: 500px;
             margin: auto;
             background: #92a5bc;
         }
@@ -18,20 +18,22 @@
 </div>
 <script>
 
-    var img =document.getElementById('img');
+    function start() {
+        setInterval('run()',20);
+    }
 
+    //1,获得图片标签
+    var img = document.getElementById('img');
     var imgX=0;
+    var imgY=0;
+    var speed=1;
     function run() {
+        //如果当前图片超过盒子的宽度，就让图片放到最左边
         if(imgX>750)
             imgX=-750;
-        imgX = imgX +5;
+        imgX =imgX+speed;
         img.style.left=imgX+"px";
     }
-
-    function start() {
-      setInterval('run()',30);
-    }
-
 </script>
 </body>
 </html>
