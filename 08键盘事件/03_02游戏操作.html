@@ -3,10 +3,45 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>H5 新属性</title>
+    <title>03_02游戏操作</title>
 </head>
 <body>
+<div id="box" style="width: 1000px;height: 700px;margin: auto;background: #4e82b4">
+    <img id="dog"  style="width: 88px;height: 88px;position: absolute"  src="../00images/02-2.png">
 
+</div>
+<script>
+    var up = 119;
+    var down =115;
+    var left = 97;
+    var right = 100;
+    var dog = document.getElementById('dog');
+    var dogX=0;
+    var dogY=0;
+document.onkeypress=function (ev) {
+    var code =ev.keyCode;
+    switch(code){
+        case up:
+            dogY=dogY-10;
+            dog.style.top=dogY+'px';
+            break;
+        case down:
+            dogY=dogY+10;
+            dog.style.top=dogY+'px';
+            break;
+        case left:
+            dogX=dogX-10;
+            dog.style.left=dogX+'px';
+            break;
+        case right:
+            dogX=dogX+10;
+            dog.style.left=dogX+'px';
+            break;
+    }
+
+}
+
+</script>
 
 </body>
 </html>
