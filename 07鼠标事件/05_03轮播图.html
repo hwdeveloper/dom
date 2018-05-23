@@ -14,7 +14,7 @@
 
 <body onload="start()">
 <div class="div" style="position: relative">
-    <img style="position: absolute" id="img" src="../00images/02-1.png">
+    <img style="width:300px;height:200px;position: absolute" id="img" src="../00images/lunbo.jpg">
 </div>
 <script>
 
@@ -22,12 +22,12 @@
 
     var imgX=0;
     function run() {
-        imgX = imgX +40;
+        imgX = imgX +30;
         img.style.left=imgX+"px";
     }
 
     function start() {
-      setInterval('run()',500);
+      setInterval('run()',20);
     }
 
 </script>

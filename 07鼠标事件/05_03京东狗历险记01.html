@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>05_03京东狗历险记</title>
+</head>
+<body >
+<div id="box" style="width: 1000px;height: 700px;margin: auto;background: #4e82b4">
+<img id="dog"  style="width: 88px;height: 88px;position: absolute"  src="../00images/02-2.png">
+
+</div>
+
+</body>
+<script>
+
+    //1,获得京东狗
+    var dog =document.getElementById('dog');
+    var isClickDog=false;
+    //2,设置点击事件
+    dog.onclick=function (ev) {
+        //3,当点击后，设置允许移动狗的图片
+        isClickDog = true;
+    }
+
+
+    //3，获得背景图片
+    var box =document.getElementById('box');
+    //4,获得移动的位置信息
+    box.onmousemove=function (ev) {
+        //5,获得具体的信息
+        var x =ev.clientX;
+        var y = ev.clientY;
+        //6,如果点击了狗，就允许移动图片
+        if(isClickDog){
+            dog.style.left=x+"px";
+            dog.style.top=y+'px';
+        }
+
+    }
+</script>
+
+</html>
