@@ -4,16 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>04作业</title>
-    <style>
-        .tdc{
-            color: red;
-            font-size: large;
-        }
-    </style>
+
 </head>
 <body>
-<table>
-   <tr></tr>
+<table id="table" border="1px">
 
 </table>
 </body>
@@ -21,44 +15,37 @@
     var dataList = [
         {id:1,name:"小刚",age:18},
         {id:2,name:"小明",age:17},
-        {id:1,name:"小刚",age:18},
-        {id:2,name:"小明",age:17},
-        {id:1,name:"小刚",age:18},
-        {id:2,name:"小明",age:17},
-        {id:1,name:"小刚",age:18},
-        {id:2,name:"小明",age:17},
-        {id:1,name:"小刚",age:18},
-        {id:2,name:"小明",age:17},
-        {id:1,name:"小刚",age:18},
-        {id:2,name:"小明",age:17},
-        {id:3,name:"小花",age:19}];
-    //1,创建容器
-    var box = document.body;
-    //2,创建Tab
-    var table =  document.createElement('table');
-
-    //3,创建tr
-    var length = dataList.length;
-    var time =0;
-    var tr;
-    dataList.forEach(function (value) {
-        //1,写5个TD的时候换行
-        if(time%5==0){
-            tr = document.createElement('tr');
-            table.appendChild(tr);
-        }
-        //2,创建td
-        var td = document.createElement('td');
-        //3,给td设置内容
-        td.innerHTML=value.name+"<img src='https://img.alicdn.com/bao/uploaded/i4/2212166590/TB1urP2n1uSBuNjSsziXXbq8pXa_!!0-item_pic.jpg_b.jpg'/>";
-        //4,设置class属性
-        td.setAttribute('class','tdc');
-        //5,把当前的td添加到tr里面
-        tr.appendChild(td);
-        time++;
-
+        {id:3,name:"小刚",age:18},
+        {id:4,name:"小明",age:17},
+        {id:5,name:"小刚",age:18},
+        {id:6,name:"小明",age:17},
+        {id:7,name:"小刚",age:18},
+        {id:8,name:"小明",age:17},
+        {id:9,name:"小刚",age:18},
+        {id:10,name:"小明",age:17},
+        {id:11,name:"小刚",age:18},
+        {id:12,name:"小明",age:17},
+        {id:13,name:"小花",age:19}];
+    //1,获得表格元素
+    var table = document.getElementById('table');
+    //2,写第一行的tr
+    var data = "<tr><td>编号</td><td>姓名</td><td>年龄</td><td>是否删除</td></tr>";
+    //3,遍历数组
+    dataList.forEach(function (person) {
+        data = data+"<tr id='tr"+person.id+"'><td>"+person.id+"</td><td>"+person.name+"</td><td>"+person.age+"</td><td><button onclick='deleteTr("+person.id+")'>删除</button></td></tr>"
     })
-    box.appendChild(table);
+
+    //给table设置innerHTML
+    table.innerHTML=data;
+    
+    function deleteTr(id) {
+        //计算当前tr的id号
+        var trID= "tr"+id;
+        //获得当前的tr
+        var tr = document.getElementById(trID);
+        //删除当前的tr
+        tr.remove();
+    }
 
 </script>
 </html>

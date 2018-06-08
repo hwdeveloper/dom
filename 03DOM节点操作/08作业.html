@@ -4,19 +4,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>04作业</title>
-    <link rel="stylesheet"
-          href="GridView/GridView.css"/>
-    <script src="GridView/GridView.js"></script>
+    <style>
+        .box{
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+        .rowBox{
+            display: flex;
+            flex-direction: row;
+        }
+        .item{
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            border: darkolivegreen solid 1px;
+        }
+        .itemImg{
+           height: 200px;
+        }
+        .title{
+            color: red;
+            font-size: large;
+        }
+        .introduce{
+            color: black;
+        }
 
+    </style>
 </head>
 <body>
-<button onclick="changeStyle()">改变样式</button>
-<div id="box">
 
-</div>
+<!--<div class="box">-->
 
+    <!--<div class="rowBox">-->
+       <!--<div class="item">-->
 
+           <!--<img class="itemImg" src="https://img.alicdn.com/bao/uploaded/i1/263817957/TB1yRjpsntYBeNjy1XdXXXXyVXa_!!0-item_pic.jpg_b.jpg"/>-->
+           <!--<p class="title">152.00</p>-->
+           <!--<p class="introduce">韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕</p>-->
+       <!--</div>-->
 
+    <!--</div>-->
+
+<!--</div>-->
 </body>
 <script>
     var infors=[
@@ -47,14 +79,48 @@
         {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
         {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
 ];
+     //1,创建节点对象
+    var box =document.createElement('div');
+    //2,设置class样式属性
+    box.setAttribute('class','box');
+    //3,设置产品的下标
+    var index = 0;
+    //4，设置每行的容器
+    var  rowBox;
+    infors.forEach(function (product) {
+        //5,每5个产品换行
+        if(index%6==0){
+            rowBox =document.createElement('div');
+            rowBox.setAttribute('class','rowBox');
+            box.appendChild(rowBox);
+        }
+        //6创建每个产品的盒子
+        var item = document.createElement('div');
+        //7,设置产品的class属性
+        item.setAttribute('class','item');
+
+        var itemImg =document.createElement('img');
+        itemImg.setAttribute('class','itemImg');
+        itemImg.src=product.img;
+        item.appendChild(itemImg);
+
+        var title =document.createElement('p');
+        title.setAttribute('class','title');
+        title.innerHTML=product.price;
+        item.appendChild(title);
+
+        var introduce =document.createElement('p');
+        introduce.setAttribute('class','introduce');
+        introduce.innerHTML=product.introduce;
+        item.appendChild(introduce);
+        rowBox.appendChild(item);
+        index++;
+    })
+
+    document.body.appendChild(box);
 
 
 
-
-function changeStyle() {
-    var gridView = new GridView('box');
-    gridView.init(infors);
-}
 
 </script>
 </html>

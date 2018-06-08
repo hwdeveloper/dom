@@ -4,21 +4,60 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>04作业</title>
+    <style>
+        .box{
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+        .rowBox{
+            display: flex;
+            flex-direction: row;
+        }
+        .item{
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            border: darkolivegreen solid 1px;
+        }
+        .itemImg{
+           height: 200px;
+        }
+        .title{
+            color: red;
+            font-size: large;
+        }
+        .introduce{
+            color: black;
+        }
 
+    </style>
 </head>
 <body>
-<table id="table" border="1px">
 
-</table>
+<!--<div class="box">-->
+
+    <!--<div class="rowBox">-->
+       <!--<div class="item">-->
+
+           <!--<img class="itemImg" src="https://img.alicdn.com/bao/uploaded/i1/263817957/TB1yRjpsntYBeNjy1XdXXXXyVXa_!!0-item_pic.jpg_b.jpg"/>-->
+           <!--<p class="title">152.00</p>-->
+           <!--<p class="introduce">韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕</p>-->
+       <!--</div>-->
+
+    <!--</div>-->
+
+<!--</div>-->
+
+<div id="box">
+
+
+</div>
 </body>
-<script >
+<script>
     var infors=[
-        {img:'https://img.alicdn.com/bao/uploaded/i1/263817957/TB1yRjpsntYBeNjy1XdXXXXyVXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//0
-        {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//1
-        {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//2
-        {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//3
-        {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//4
-        {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//5
+        {img:'https://img.alicdn.com/bao/uploaded/i1/263817957/TB1yRjpsntYBeNjy1XdXXXXyVXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
         {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
         {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
         {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
@@ -39,42 +78,63 @@
         {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
         {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
         {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
-    ];
-    //1,获得表格元素
-    var table = document.getElementById('table');
-    //2,写第一行的tr
-    var data = "";
+        {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+];
 
-    var length =3;
+    
+    function GridView(id) {
+        this.id=id;
+        this.init=function (gridData) {
+            //1,创建节点对象
+            var gridV =document.createElement('div');
+            //2,设置class样式属性
+            gridV.setAttribute('class','box');
+            //3,设置产品的下标
+            var index = 0;
+            //4，设置每行的容器
+            var  rowBox;
+            gridData.forEach(function (product) {
+                //5,每5个产品换行
+                if(index%5==0){
+                    rowBox =document.createElement('div');
+                    rowBox.setAttribute('class','rowBox');
+                    gridV.appendChild(rowBox);
+                }
+                //6创建每个产品的盒子
+                var item = document.createElement('div');
+                //7,设置产品的class属性
+                item.setAttribute('class','item');
 
-    var index=0;
+                var itemImg =document.createElement('img');
+                itemImg.setAttribute('class','itemImg');
+                itemImg.src=product.img;
+                item.appendChild(itemImg);
 
-    infors.forEach(function (infor) {
+                var title =document.createElement('p');
+                title.setAttribute('class','title');
+                title.innerHTML=product.price;
+                item.appendChild(title);
 
-        if(index%length==0){
-            data = data+"<tr>"
+                var introduce =document.createElement('p');
+                introduce.setAttribute('class','introduce');
+                introduce.innerHTML=product.introduce;
+                item.appendChild(introduce);
+                rowBox.appendChild(item);
+                index++;
+            })
+
+            var box =document.getElementById(this.id);
+            box.appendChild(gridV);
         }
+    }
 
-        var tdData = "<td><img src='"+infor.img+"'></td>";
+    var gridView = new GridView('box');
+    gridView.init(infors);
 
-        data = data+tdData;
-
-        if(index%length==length-1){
-            data = data+"</tr>"
-        }
-        index++;
-    })
-
-    var size = data.length;
-
-    var buffer =data.substring(size-3,size-1);
-    console.log(data);
-   if(buffer!='tr'){
-       data = data+"</tr>"
-   }
-    console.log(data);
-
-    table.innerHTML=data;
 
 </script>
 </html>
