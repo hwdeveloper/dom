@@ -13,27 +13,28 @@
 <body>
 
 <div class="menu" onclick="showContent(this)">菜单一</div>
+<div style="display: none"><div>一</div><div>二</div><div>三</div></div>
 <div class="menu" onclick="showContent(this)" >菜单二</div>
+<div style="display: none"><div>一</div><div>二</div><div>三</div></div>
 <div class="menu" onclick="showContent(this)">菜单三</div>
-
+<div style="display: none"><div>一</div><div>二</div><div>三</div></div>
 </body>
 
 
 <script>
 
-     var buffer;
-     var child;
-    function showContent(menu) {
-        if(buffer!=null){
-            buffer.removeChild(child);
-        }
-       //1,创建节点
-        var div = document.createElement('div');
-        div.innerHTML="<div>1</div><div>2</div><div>3</div>";
-        menu.appendChild(div);
+    var buffer;
 
-        child=div;
-        buffer=menu;
+
+    function showContent(menu) {
+        if(buffer!=null)
+            buffer.style.display='none';
+
+
+        var next = menu.nextElementSibling;
+        next.style.display='block';
+        buffer= next;
+
     }
 
 
