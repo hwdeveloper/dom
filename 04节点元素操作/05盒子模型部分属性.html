@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05盒子模型部分属性</title>
+
+
+</head>
+<body>
+
+<div style="overflow:hidden;width: 750px;height: 500px;position: relative;margin: auto;background-color: #cccccc">
+
+    <h1 id="title" style="position:absolute;background-color: #0099cc;width: 260px">标题</h1>
+</div>
+
+</body>
+<script>
+    var h1 =document.getElementById('title');
+    console.log(h1.scrollWidth);
+    console.log(h1.clientHeight);
+
+</script>
+</html>

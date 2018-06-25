@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div{
+            width: 75px;
+            height: 60px;
+            margin: auto;
+            background: #92a5bc;
+        }
+    </style>
+
+<body onload="start()">
+<div class="div" style="position: relative">
+    <img style="width:75px;height:50px;position: absolute" id="img1" src="../00images/05-2.jpg">
+    <img style="left:-75px;width:75px;height:50px;position: absolute" id="img2" src="../00images/05-3.jpg">
+    <img style="left:-150px;width:75px;height:50px;position: absolute" id="img3" src="../00images/05-4.jpg">
+    <img style="left:-225px;width:75px;height:50px;position: absolute" id="img4" src="../00images/05-1.jpg">
+</div>
+<script>
+    //1,获得图片标签数组
+    var imgs = document.getElementsByTagName('img');
+    //2,创建图片盒子对象数组
+    var length = imgs.length;
+    var imgBoxs=[];
+    for(var i=0;i<length;i++){
+        var x = -i*75;
+        imgBoxs[i]={imgX:x,imgY:0,img:imgs[i]};
+    }
+    function start() {
+        setInterval('run()',20);
+    }
+    var speed=1;
+    function run() {
+        var imgx = imgBoxs[0].imgX;
+        imgx = imgx+speed;
+        imgBoxs[0].img.style.left=imgx+"px";
+
+    }
+</script>
+</body>
+</html>
