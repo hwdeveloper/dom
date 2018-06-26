@@ -2,55 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        .div{
-            width: 75px;
-            height: 60px;
-            margin: auto;
-            background: #92a5bc;
-        }
-    </style>
+    <title>08轮播图06</title>
+    <script>
 
-<body onload="start()">
-<div class="div" style="position: relative">
-    <img style="width:75px;height:50px;position: absolute" id="img1" src="../00images/05-2.jpg">
-    <img style="left:-75px;width:75px;height:50px;position: absolute" id="img2" src="../00images/05-3.jpg">
- </div>
+    </script>
+</head>
+<body>
+<div id="box" style="overflow:hidden;width: 200px;height: 150px;margin: auto;background-color: #0099cc;position: relative">
+    <!--<img id="img" src="../00images/05-1.jpg" style="width: 200px;height: 150px;position: absolute"/>-->
+</div>
+</body>
 <script>
+    //1,获得box
+    var box = document.getElementById('box');
+    //2,原始的图片地址
+    var imgs = ['../00images/05-1.jpg','../00images/05-2.jpg','../00images/05-3.jpg','../00images/05-4.jpg'];
+    //3,获得图片的数量
+    var num = imgs.length;
+    //4,创建图片元素数组
+    var imgbox=[];
+    //5,循环创建图片元素
+    for(var i=0;i<2;i++){
+        //(1)创建图片元素
+        var buffer = document.createElement('img');
+        //(2)设置图片的地址
+        buffer.src=imgs[i];
+        //(3)设置图片元素的大小
+        buffer.style.width='200px';
+        buffer.style.height='150px';
+        //(4)设置位置
+        buffer.style.position="absolute";
+        //(5)设置图片的坐标
+        var x = -200*i;
+        imgbox[i]={img:buffer,imgX:x};
+        imgbox[i].img.style.left=imgbox[i].imgX+"px";
+        //(6)把当前的图片元素添加到box
+        box.appendChild(imgbox[i].img);
+    }
 
-    //1,图片数据
-    var imgUrls =['../00images/05-1.jpg','../00images/05-2.jpg','../00images/05-3.jpg','../00images/05-4.jpg'];
-    var imgNum=imgUrls.length;
-    var imgIndex=2;
-    //1,获得图片标签数组
-    var imgs = document.getElementsByTagName('img');
-    //2,创建图片盒子对象数组
-    var length = imgs.length;
-    var imgBoxs = [];
-    for(var i=0;i<length;i++){
-        var x = -i*75;
-        imgBoxs[i]={imgX:x,imgY:0,img:imgs[i]};
-    }
-    function start() {
-        setInterval('run()',20);
-    }
-    var speed =2;
+    //6,启动动画
+    setInterval('run()',30);
+    //7,图片的下标
+    var index= 1;
     function run() {
-        for(var i=0;i<length;i++){  //10   21  32
-            imgBoxs[i].imgX =imgBoxs[i].imgX+speed;
-            if(imgBoxs[i].imgX>75){
-                imgBoxs[i].imgX=-75;
-                imgIndex++;
-                imgIndex =imgIndex%imgNum;
-                imgBoxs[i].img.src=imgUrls[imgIndex];
+        imgbox.forEach(function (box) {
+            //1,更改box里面的坐标
+            box.imgX =box.imgX+10;
+            if(box.imgX>=200){
+                //2,设置到最左边
+                box.imgX = -200;
+                //3,更换当前的图片
+                index++;
+                if(index>=num)
+                    index=0;
+                box.img.src= imgs[index];
             }
 
-            imgBoxs[i].img.style.left=imgBoxs[i].imgX+"px";
-        }
+            box.img.style.left=box.imgX+"px";
+
+        })
     }
+
 
 
 </script>
-</body>
 </html>
