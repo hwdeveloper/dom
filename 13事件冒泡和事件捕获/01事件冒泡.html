@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+</head>
+<body>
+<div id="parent">
+    　　<div id="child" class="child">事件冒泡</div>
+</div>
+</body>
+<script>
+    document.getElementById("parent").addEventListener("click",function(e)   {
+        alert("parent事件被触发，"+this.id);
+    })
+
+    document.getElementById("child").addEventListener("click",function(e)
+    {
+        alert("child事件被触发，"+this.id)
+    })
+</script>
+</html>
