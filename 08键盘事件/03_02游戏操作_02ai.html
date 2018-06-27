@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>游戏操作</title>
+    <script src="js/Sprite.js"></script>
+</head>
+<body>
+
+</body>
+
+<script>
+
+    var npc = new Sprite();
+    npc.init();
+
+    //设置键盘的事件
+    document.onkeypress=function (ev) {
+        npc.onkeypress(ev);
+    }
+
+    setInterval('run()',100);
+    
+    function run() {
+        npc.run();
+    }
+</script>
+</html>
