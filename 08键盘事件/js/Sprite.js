@@ -7,133 +7,187 @@ function Sprite() {
     var npcLeft = ['img/left1.png', 'img/left2.png', 'img/left3.png', 'img/left4.png', 'img/left5.png', 'img/left6.png', 'img/left7.png'];
     //向右移动的位置
     var npcRight = ['img/right1.png', 'img/right2.png', 'img/right3.png', 'img/right4.png', 'img/right5.png', 'img/right6.png', 'img/right7.png'];
-    //图片
-    var img;
-    //坐标
-    var imgX = 400;
-    var imgY = 200;
-    //数据初始化
-    this.init = function () {
-        //1,创建图片
-        img = document.createElement('img');
-        //2,设置位置关系
-        img.style.position = "absolute";
-        img.style.left = imgX + "px";
-        img.style.top = imgY + "px";
-        //3,设置图片
-        img.src = 'img/down1.png';
 
-        //4，把图片添加到body
+
+    //按键按下的状态值
+    var KEY_UP=119;
+    var KEY_DOWN=115;
+    var KEY_LEFT=97;
+    var KEY_RIGHT=100;
+
+    //角色的图片元素
+    var img;
+
+    //图片的坐标
+    var imgX=500;
+    var imgY=100;
+
+    //图片的大小
+    var imgWidth=32;
+    var imgHeight=84;
+
+    //速度
+    var speedX=10;
+    var speedY=10;
+
+    //图片的下标
+    var index=0;
+
+    //屏幕的宽度和高度
+    var widthS=document.body.clientWidth;
+    var heightS=800;
+
+    this.init=function () {
+        //1,创建图片元素
+        img = document.createElement('img');
+        //2,设置位置
+        img.style.position="absolute";
+        img.style.left=imgX+"px";
+        img.style.top=imgY+"px";
+
+        //设置图片的大小
+        img.style.width=imgWidth;
+        img.style.height=imgHeight;
+
+        img.src=npcDown[index];
+
         document.body.appendChild(img);
 
     }
 
-    var index=0;
-
-    this.onkeypress = function (ev) {
+    this.onkeypress=function(ev) {
+        //1,获得键盘按下去的按键
         var keyCode = ev.keyCode;
         switch (keyCode) {
-            case 100://右
+            case KEY_RIGHT:
                 this.moveRight();
                 break;
-            case 119://上
+            case KEY_UP:
                 this.moveUp();
                 break;
-            case 97://左
+            case KEY_LEFT:
                 this.moveLeft();
                 break;
-            case 115:
+            case KEY_DOWN:
                 this.moveDown();
                 break;
         }
     }
-    
-    this.moveLeft=function () {
-        if(index>=7)
-            index=0;
-        img.src = npcLeft[index];
-        index++;
 
-        imgX =imgX-10;
-        img.style.left = imgX + "px";
-    }
     this.moveRight=function () {
+        //1,处理图片的位移
+        imgX = imgX+speedX;
+        if(imgX>=widthS-imgWidth){
+
+            state=MOVE_LEFT;
+        }
+        img.style.left=imgX+"px";
+
+        //2,处理图片的动画
+        index++;
         if(index>=7)
             index=0;
-        img.src = npcRight[index];
-        index++;
+        img.src=npcRight[index];
 
-        imgX =imgX+10;
-        img.style.left = imgX + "px";
     }
+
+    this.moveLeft=function () {
+        imgX = imgX-speedX;
+        if(imgX<=0){
+
+            state=MOVE_RIGHT;
+        }
+        img.style.left=imgX+"px";
+
+        //2,处理图片的动画
+        index++;
+        if(index>=7)
+            index=0;
+        img.src=npcLeft[index];
+    }
+
     this.moveUp=function () {
+        imgY = imgY-speedY;
+        if(imgY<=0){
+
+            state=MOVE_DOWN;
+        }
+        img.style.top=imgY+"px";
+
+        //2,处理图片的动画
+        index++;
         if(index>=7)
             index=0;
-        img.src = npcUp[index];
-        index++;
-
-        imgY =imgY-10;
-        img.style.top = imgY + "px";
+        img.src=npcUp[index];
     }
+
     this.moveDown=function () {
+        imgY = imgY+speedY;
+        if(imgY>=heightS-imgHeight){
+            state=MOVE_UP;
+        }
+        img.style.top=imgY+"px";
+
+        //2,处理图片的动画
+        index++;
         if(index>=7)
             index=0;
-        img.src = npcDown[index];
-        index++;
-
-        imgY =imgY+10;
-        img.style.top = imgY + "px";
+        img.src=npcDown[index];
     }
 
-    var NPC_DOWN=0;
-    var NPC_UP=NPC_DOWN+1;
-    var NPC_LEFT=NPC_UP+1;
-    var NPC_RIGHT=NPC_LEFT+1;
-    var state = NPC_LEFT;
+    var time=0;
 
-    var time =0;
-    this.run=function () {
-        time++;
-        if(time>10)
+    //运动方向的状态值
+    var MOVE_UP=0;
+    var MOVE_DOWN=MOVE_UP+1;
+    var MOVE_LEFT=MOVE_DOWN+1;
+    var MOVE_RIGHT=MOVE_LEFT+1;
+    //状态值
+    var state =MOVE_DOWN;
+    this.run=function() {
+        //角色思考怎么走
         this.logic();
+        //角色怎么走
         this.move();
     }
-    
     this.logic=function () {
-        var random = Math.floor(Math.random()*20);
-        if(random<5){
-            state=NPC_RIGHT;
-        }else if(random>=5&&random<10){
-            state=NPC_LEFT;
-        }
-        else if(random>=10&&random<15){
-            state=NPC_UP;
-        }
-        else {
-            state=NPC_DOWN;
-        }
-        time=0;
-    }
-    
-    this.move=function () {
-        switch(state){
-            case NPC_LEFT:
-                this.moveLeft();
-                if(imgX<=0)
-                    state=NPC_RIGHT;
-                break;
-            case NPC_RIGHT:
-                this.moveRight();
-                if(imgX>=1200)
-                    state=NPC_LEFT;
-                break;
-            case NPC_UP:
-                this.moveUp();
-                break;
-            case NPC_DOWN:
-                this.moveDown();
-                break;
+        time++;
+        if(time>10){
+            //思考
+            var random =Math.floor(Math.random()*20);
+            if(random<5){
+                //向左走
+                state=MOVE_LEFT;
+            }else if(random>=5&&random<10){
+                //向右走
+                state=MOVE_RIGHT;
+            }else if(random>=10&&random<15){
+                //向上走
+                state=MOVE_UP;
+            }else {
+                //向下走
+                state=MOVE_DOWN;
+            }
+            time=5+Math.floor(Math.random()*10);
         }
     }
 
+    this.move=function () {
+
+        switch(state){
+            case MOVE_UP:
+                this.moveUp();
+                break;
+            case MOVE_DOWN:
+                this.moveDown();
+                break;
+            case MOVE_LEFT:
+                this.moveLeft();
+                break;
+            case MOVE_RIGHT:
+                this.moveRight();
+                break;
+        }
+    }
 }
+
