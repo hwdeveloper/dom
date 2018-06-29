@@ -14,5 +14,28 @@
     用户名失去焦点，同时注册密码框获得焦点。
 </h1>
 
+
+<table>
+    <tr><td>用户名</td><td><input type="text"></td></tr>
+    <tr><td>密  码</td><td><input type="text"></td></tr>
+</table>
 </body>
+<script>
+    //获得当前页面的input
+    var inputs = document.getElementsByTagName('input');
+    //设置回车键的下标
+    var index =0;
+    //设置输入框获得焦点
+    inputs[index].focus();
+    //设置键盘回车键的点击事件
+    document.onkeydown=function (ev) {
+        if(ev.keyCode==13){
+            index++;
+            if(index<inputs.length){
+                inputs[index].focus();
+            }
+
+        }
+    }
+</script>
 </html>
